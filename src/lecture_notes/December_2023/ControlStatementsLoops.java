@@ -1,4 +1,4 @@
-package lecture_notes;
+package lecture_notes.December_2023;
 
 public class ControlStatementsLoops {
 

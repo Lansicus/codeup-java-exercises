@@ -3,8 +3,8 @@ package December_2023;
 import java.util.Scanner;
 
 public class Bob {
-    public static void main(String[] args) {
-//
+
+
 //Bob is a lackadaisical teenager. In conversation, his responses are very limited.
 //
 //Bob answers 'Bet.' if you ask him a question. (the input ends with a question mark)
@@ -13,7 +13,7 @@ public class Bob {
 //He answers 'Probs.' to anything else.
 //Write the Java code necessary so that a user of your command line application can have a conversation with Bob.
 
-
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean continueTalking;
 
@@ -39,6 +39,7 @@ public class Bob {
         scanner.close();
     }
 
+
     private static void respondToUserInput(String userInput) {
         if (userInput.endsWith(".")) {
             System.out.println("Didn't know you were chill like that.");
@@ -52,4 +53,7 @@ public class Bob {
             System.out.println("... ... Don dokodokodoko");
         }
     }
+
+
+
 }
