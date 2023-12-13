@@ -1,5 +1,5 @@
 
-package December_2023;
+package Assignments.January_2023.December_2023;
 
 public class StringExercise {
     public static void main(String[] args) {

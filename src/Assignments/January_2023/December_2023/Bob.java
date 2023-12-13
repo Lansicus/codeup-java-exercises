@@ -1,4 +1,4 @@
-package December_2023;
+package Assignments.January_2023.December_2023;
 
 import java.util.Scanner;
 
