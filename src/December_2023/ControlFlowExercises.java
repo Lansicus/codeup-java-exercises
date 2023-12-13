@@ -1,3 +1,5 @@
+package December_2023;
+
 import java.util.Scanner;
 
 public class ControlFlowExercises {
@@ -130,9 +132,12 @@ public class ControlFlowExercises {
 }
 
 
+
+
+/*--------------------------------------------------------------------------------------------- ALTERNATIVE SOLUTIONS */
 //import java.util.Scanner;
 //
-//public class ControlFlowExercises {
+//public class December_2023.ControlFlowExercises {
 //    public static void main(String[] args) {
 //        // Exercise 1: While Loop
 //        int i = 5;

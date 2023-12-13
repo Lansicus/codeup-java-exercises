@@ -1,4 +1,4 @@
-import java.util.Scanner;
+package lecture_notes;
 
 public class ControlStatementsLoops {
 
