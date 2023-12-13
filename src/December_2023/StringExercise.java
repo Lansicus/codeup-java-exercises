@@ -9,7 +9,7 @@ public class StringExercise {
         String check12 = "Check \"this\" out!, \"s inside of \"s!";
         String window = "In windows, the main drive is usually C:\\";
         String backslash = "I can do backslashes \\, double backslashes \\\\,";
-        String trips = "and the amazing triple backslash \\\\\\!";
+        String tripsBack = "and the amazing triple backslash \\\\\\!";
 
         // Printing the strings for verification
         System.out.println(education);
@@ -17,7 +17,7 @@ public class StringExercise {
         System.out.println(check12);
         System.out.println(window);
         System.out.println(backslash);
-        System.out.println(trips);
+        System.out.println(tripsBack);
 
 
 
