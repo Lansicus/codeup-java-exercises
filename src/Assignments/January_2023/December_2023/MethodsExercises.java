@@ -1,10 +1,14 @@
 package Assignments.January_2023.December_2023;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MethodsExercises {
     public static void main(String[] args) {
-        /*------------------------------------------------------------------- CALCULATOR SCANNER */
+/*----------------------------------------------------------------------------------------------------------------------  MAIN */
+/*----------------------------------------------------------------------------------------------------------------------  SCANNERS */
+
+/*-------------------------------------------------------------------------------------------------------  CALCULATOR */
         Scanner scanner = new Scanner(System.in);
         boolean keepCalculating;
 
@@ -33,7 +37,7 @@ public class MethodsExercises {
                     break;
                 }
 
-                System.out.print("Keep calculating? [y/n]: ");
+                System.out.println("Keep calculating? [y/n]: ");
                 scanner.nextLine();
                 String ynInput = scanner.nextLine();
                 keepCalculating = ynInput.equalsIgnoreCase("y");
@@ -43,20 +47,33 @@ public class MethodsExercises {
             }
         } while (keepCalculating);
 
-        System.out.println("Closing calculator. Have a great day!");
-        scanner.close();
+        System.out.println("Calculator closed. Have a great day!");
 
-        /*------------------------------------------------------------------- RANGE SCANNER */
-//        System.out.print("Enter a number between 1 and 10: ");
-//        int userInput = getInteger(1, 10, scanner);
-//
-//        System.out.println("You entered: " + userInput);
-//
-//        scanner.close();
+
+/*-----------------------------------------------------------------------------------------------------------  RANGER */
+        int userInput = getInteger(1, 10, scanner);
+
+        System.out.println("You entered: " + userInput);
+        scanner.nextLine();
+
+        scanner.close();
     }
 
 
-/*--------------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------  FACTORIAL */
+//    boolean factorial;
+//    do {
+//        if (initiate.startsWith("1")) {
+//            int num = getIntInput("Input a number between 0-20: ", scanner);
+//            calculateFactorial(num);
+//        }
+//    }while (factorial);
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------  METHODS */
+
+/*-------------------------------------------------------------------------------------------------------  CALCULATOR */
     private static double getDoubleInput(String message, Scanner scanner) {
         System.out.print(message);
         while (!scanner.hasNextDouble()) {
@@ -128,27 +145,66 @@ public class MethodsExercises {
 
 
 
-/*----------------------------------------------------------------------------------------------------------------------  RANGER */
-//    public static int getInteger(int min, int max, Scanner scannerRange) {
-//        System.out.print("Please enter a number between " + min + " and " + max + ": ");
-//        try {
-//            int input = Integer.parseInt(scannerRange.nextLine());
+    /*-------------------------------------------------------------------------------------------------------  RANGER */
+    public static int getInteger(int min, int max, Scanner scanner) {
+        System.out.print("Please enter a number between " + min + " and " + max + ": ");
+        try {
+            int input = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+
+            // Check if the input is within the specified range
+            if (input >= min && input <= max) {
+                return input;
+            } else {
+                System.out.println("Invalid input. Number must be between " + min + " and " + max + ".");
+                // Recursively call the method to prompt the user again
+                return getInteger(min, max, scanner);
+            }
+        } catch (InputMismatchException e) {
+            // Handle non-integer input
+            System.out.println("Invalid input. Please enter a valid number.");
+            scanner.nextLine(); // Consume the invalid input
+            // Recursively call the method to prompt the user again
+            return getInteger(min, max, scanner);
+        }
+    }
+
+
+
+    /*-------------------------------------------------------------------------------------------------------  RANGER */
+//Calculate the factorial of a number.
 //
-//            // Check if the input is within the specified range
-//            if (input >= min && input <= max) {
-//                return input;
-//            } else {
-//                System.out.println("Invalid input. Number must be between " + min + " and " + max + ".");
-//                // Recursively call the method to prompt the user again
-//                return getInteger(min, max, scannerRange);
-//            }
-//        } catch (NumberFormatException e) {
-//            // Handle non-integer input
-//            System.out.println("Invalid input. Please enter a valid number.");
-//            // Recursively call the method to prompt the user again
-//            return getInteger(min, max, scannerRange);
-//        }
+//Prompt the user to enter an integer from 1 to 10.
+//
+//Display the factorial of the number entered by the user.
+//
+//Ask if the user wants to continue.
+//
+//Use a for loop to calculate the factorial.
+//
+//Assume that the user will enter an integer, but verify it’s between 1 and
+//
+//Use the long type to store the factorial.
+//
+//Continue only if the user agrees to.
+//
+//A factorial is a number multiplied by each of the numbers before it.
+//
+//Factorials are denoted by the exclamation point (n!). Ex:
+//
+//1! = 1               = 1
+//2! = 1 x 2           = 2
+//3! = 1 x 2 x 3       = 6
+//4! = 1 x 2 x 3 x 4   = 24
+//    public static long factorial(String[] args) {
+//        int numToFactorialize = getInteger(1,10)
 //    }
+
+
+
+
+
+
 
 
 }
