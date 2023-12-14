@@ -2,58 +2,91 @@ package Assignments.January_2023.December_2023;
 
 import java.util.Scanner;
 
-
-/*----------------------------------------------------------------------------------------------------------------------  CALCULATOR */
 public class MethodsExercises {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean keepCalculating;
 
         do {
-            System.out.print("Engage in simple, 2-parameter math? [y/n]: ");
-            String initiate = scanner.nextLine();
+            System.out.print("Open calculator? [y/n]: ");
+            String calculate = scanner.next();
+            if (calculate.toLowerCase().startsWith("y")) {
+                System.out.print("""
+                        Choose operation:
+                        1. Factorial of one number
+                        2. Two-number math
+                        [1/2]:\s""");
+                String initiate = scanner.next();
 
-            if (initiate.toLowerCase().startsWith("y")) {
-                System.out.print("Enter the first number: ");
-                int num1 = scanner.nextInt();
+                if (initiate.startsWith("2")) {
+                    double num1 = getDoubleInput("Enter the first number: ");
+                    double num2 = getDoubleInput("Enter the second number: ");
+                    char operation = getOperationInput();
 
-                System.out.print("Enter the second number: ");
-                int num2 = scanner.nextInt();
-                scanner.nextLine(); // Consume the newline character
+                    performOperation(num1, num2, operation);
+                } else if (initiate.startsWith("1")) {
+                    int num = getIntInput("Input a number between 0-20: ");
+                    calculateFactorial(num);
+                } else {
+                    break;
+                }
 
-                System.out.print("Choose operation (+, -, *, /, %, !): ");
-                char operation = scanner.next().charAt(0);
-                scanner.nextLine(); // Consume the newline character
-
-                performOperation(num1, num2, operation);
+                System.out.print("Keep calculating? [y/n]: ");
+                String ynInput = scanner.next();
+                keepCalculating = ynInput.equalsIgnoreCase("y");
             } else {
-                break;
+                keepCalculating = false;
             }
-
-            System.out.print("Keep mathing? [y/n]: ");
-            String ynInput = scanner.nextLine();
-            keepCalculating = ynInput.equalsIgnoreCase("y");
-
         } while (keepCalculating);
 
         System.out.println("Goodbye! Have a great day.");
         scanner.close();
     }
 
+    private static double getDoubleInput(String message) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(message);
+        while (!scanner.hasNextDouble()) {
+            System.out.print("Invalid input. Enter a valid number: ");
+            scanner.next();
+        }
+        return scanner.nextDouble();
+    }
+
+    private static int getIntInput(String message) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(message);
+        while (!scanner.hasNextInt()) {
+            System.out.print("Invalid input. Enter a valid number: ");
+            scanner.next();
+        }
+        return scanner.nextInt();
+    }
+
+    private static char getOperationInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Choose operation (+, -, *, /, %): ");
+        String input;
+        while (!(input = scanner.next()).matches("[+\\-*/%]")) {
+            System.out.print("Invalid input. Choose a valid operation: ");
+        }
+        return input.charAt(0);
+    }
+
     public static void performOperation(double a, double b, char operation) {
         switch (operation) {
             case '+':
-                System.out.println("Addition: " + (a + b));
+                System.out.println(a + " + " + b + " = " + (a + b));
                 break;
             case '-':
-                System.out.println("Subtraction: " + (a - b));
+                System.out.println(a + " - " + b + " = " + (a - b));
                 break;
             case '*':
-                System.out.println("Multiplication: " + (a * b));
+                System.out.println(a + " * " + b + " = " + (a * b));
                 break;
             case '/':
                 if (b != 0) {
-                    System.out.println("Division: " + (a / b));
+                    System.out.println(a + " / " + b + " = " + (a / b));
                 } else {
                     System.out.println("Undefined: Cannot divide by zero.");
                 }
@@ -65,30 +98,25 @@ public class MethodsExercises {
                     System.out.println("Cannot calculate remainder when dividing by zero.");
                 }
                 break;
-            case '!':
-                if (a >= 0 && a == Math.floor(a) && a <= 20) {
-                    System.out.println("Factorial of " + (int) a + ": " + calculateFactorial((int) a));
-                } else {
-                    System.out.println("Invalid input for factorial calculation. Please enter a non-negative integer <= 20.");
-                }
-                break;
-
             default:
                 System.out.println("Invalid operation.");
         }
     }
 
-    public static double calculateFactorial(int n) {
+    public static void calculateFactorial(int n) {
         if (n < 0 || n > 20) {
-            System.out.println("Cannot perform factorial calculation on input > 20.");
-            return -1; // Return a special value to indicate an error
+            System.out.println("Cannot perform factorial calculation on input < 0, > 20.");
+            return;
         }
         int result = 1;
         for (int i = 1; i <= n; i++) {
             result *= i;
         }
-        return result;
+        System.out.println("Factorial: " + result);
     }
+
+
+
 
 
 
